@@ -58,7 +58,7 @@ module RSpec::Puppet::Augeas
         unless @resource
           title = self.class.description
           title = $1 if title =~ /^Augeas\[(.*)\]$/
-          @resource = catalogue.resource('Augeas', title)
+          @resource = catalogue(:define).resource('Augeas', title)
         end
         @resource
       end

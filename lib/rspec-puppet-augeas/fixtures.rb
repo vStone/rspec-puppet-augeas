@@ -39,6 +39,8 @@ module RSpec::Puppet::Augeas
       logs.clear
       Puppet::Util::Log.newdestination(Puppet::Test::LogCollector.new(logs))
       Puppet::Util::Log.level = 'debug'
+      Puppet::Util::Storage.stubs(:load)
+      Puppet::Util::Storage.stubs(:store)
 
       [:require, :before, :notify, :subscribe].each { |p| resource.delete p }
       catalog = Puppet::Resource::Catalog.new
